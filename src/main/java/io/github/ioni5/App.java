@@ -6,7 +6,7 @@ package io.github.ioni5;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws InterruptedException
     {
         new Game().start();
     }
