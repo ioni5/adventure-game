@@ -16,5 +16,17 @@ public class Game {
             option = console.readInt("(Please enter 1 or 2): ");
             error = option != 1 && option != 2;
         } while (error);
+        switch (option) {
+            case 1:
+                console.writeWithDelay("\nYou approach the door of the house.");
+                console.writeWithDelay("\nYou are about to knock when the door opens and out steps a troll.");
+                console.writeWithDelay("\nEep! This is the troll's house!");
+                console.writeWithDelay("\nThe troll attacks you!");
+                break;
+            case 2:
+                console.writeWithDelay("\nYou peer cautiously into the cave.");
+                console.writeWithDelay("\nIt turns out to be only a very small cave.");
+                break;
+        }
     }
 }
