@@ -9,8 +9,12 @@ public class Game {
         
         console.write("\nEnter 1 to knock on the door of the house. ");
         console.write("\nEnter 2 to peer into the cave.");
-        console.write("\nWhat would you like to do? ");
-        int option = console.readInt("\n(Please enter 1 or 2). ");
-        console.write(option);
+        console.write("\nWhat would you like to do?\n");
+        int option = 0;
+        boolean error = false;
+        do {
+            option = console.readInt("(Please enter 1 or 2): ");
+            error = option != 1 && option != 2;
+        } while (error);
     }
 }
