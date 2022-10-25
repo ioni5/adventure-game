@@ -18,9 +18,7 @@ public class Game {
     }
     
     public void start() {
-        Console console = new Console();
-        console.write("\nAdventure Game\n");
         root.start(player);
-        console.write("\nGame Over\n");
+        new Console().write("\nGame Over\n");
     }
 }

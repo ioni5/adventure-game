@@ -56,7 +56,7 @@ public class Console {
         return input;
     }
 
-    private String read(String message) {
+    String read(String message) {
         String input = null;
         this.write(message);
         try {
