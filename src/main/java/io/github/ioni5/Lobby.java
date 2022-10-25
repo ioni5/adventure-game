@@ -15,7 +15,7 @@ public class Lobby extends Scenary {
 
     @Override
     public String getTitle() {
-        return "estas en lobby";
+        return null;
     }
 
 }
