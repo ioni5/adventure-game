@@ -6,18 +6,34 @@ public class Console {
 
     private Scanner sc = new Scanner(System.in);
 
+    private int delay;
+
+    public Console() {}
+
+    public Console(int delay) {
+        this.delay = delay;
+    }
+
+    public void write(String[] messages) {
+        for (String message : messages) {
+            this.write(message);
+        }
+    }
+
     public void write(String message) {
-        System.out.print(message);
+        if (delay > 0) {
+            this.writeWithDelay(message);
+        } else {
+            System.out.print(message);
+        }
     }
 
-    public void write(int message) {
-        System.out.print(message);
-    }
-
-    public void writeWithDelay(String message) {
-        this.write(message);
+    private void writeWithDelay(String message) {
         try {
-            Thread.sleep(2000);
+            for (char c : message.toCharArray()) {
+                System.out.print(c);
+                Thread.sleep(delay);
+            }
         } catch (InterruptedException e) {
             System.exit(0);
         }
@@ -25,9 +41,32 @@ public class Console {
 
     public int readInt(String message) {
         int input = 0;
+        try {
+            input = Integer.parseInt(this.read(message));
+        } catch (Exception ex) {
+            this.write("\nError: invalid input.");
+            System.exit(0);
+        }
+        return input;
+    }
+
+    public boolean readYesOrNot(String message) {
+        String input = this.read(message);
+        boolean error = false;
+        do {
+            error = !input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("not");
+            if (error) {
+                this.write("Please enter \"yes\" or \"not\": ");
+            }
+        } while (error);
+        return input.equalsIgnoreCase("yes");
+    }
+
+    private String read(String message) {
+        String input = null;
         this.write(message);
         try {
-            input = sc.nextInt();
+            input = sc.nextLine();
         } catch (Exception ex) {
             this.write("\nError: invalid input.");
             System.exit(0);
