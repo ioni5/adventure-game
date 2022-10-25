@@ -1,10 +1,15 @@
 package io.github.ioni5;
 
+import java.util.Random;
+
 public class House extends Scenary {
 
+    private String enemy;
+
     public House() {
-        this.add(new FightAction());
-        this.add(new RunawayAction());
+        enemy = Game.ENEMIES[new Random().nextInt(Game.ENEMIES.length)];
+        this.add(new FightAction(this, enemy));
+        this.add(new RunawayAction(this));
     }
 
     @Override
@@ -12,16 +17,16 @@ public class House extends Scenary {
         Console console = new Console(Game.DELAY);
         console.write(new String[]{
             "\nYou approach the door of the house.",
-            "\nYou are about to knock when the door opens and out steps a troll.",
-            "\nEep! This is the troll's house!",
-            "\nThe troll attacks you!"
-        });
-        this.actionSelector().start(this, player);
+            "\nYou are about to knock when the door opens and out steps a %s.",
+            "\nEep! This is the %s's house!",
+            "\nThe %s attacks you!"
+        }, enemy);
+        this.actionSelector().start(player);
     }
 
     @Override
     public String getTitle() {
-        return "knock on the door of the house.";
+        return "Knock on the door of the house.";
     }
 
 }

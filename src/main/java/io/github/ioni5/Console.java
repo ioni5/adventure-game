@@ -20,6 +20,12 @@ public class Console {
         }
     }
 
+    public void write(String[] messages, String value) {
+        for (String message : messages) {
+            this.write(String.format(message, value));
+        }
+    }
+
     public void write(String message) {
         if (delay > 0) {
             this.writeWithDelay(message);
@@ -48,18 +54,6 @@ public class Console {
             System.exit(0);
         }
         return input;
-    }
-
-    public boolean readYesOrNot(String message) {
-        String input = this.read(message);
-        boolean error = false;
-        do {
-            error = !input.equalsIgnoreCase("yes") && !input.equalsIgnoreCase("not");
-            if (error) {
-                this.write("Please enter \"yes\" or \"not\": ");
-            }
-        } while (error);
-        return input.equalsIgnoreCase("yes");
     }
 
     private String read(String message) {

@@ -4,6 +4,12 @@ public abstract class Action implements Option {
 
     protected Console console = new Console(Game.DELAY);
 
-    public abstract void start(Scenary scenary, Player player);
+    protected Scenary scenary;
+
+    public Action(Scenary scenary) {
+        this.scenary = scenary;
+    }
+
+    public abstract void start(Player player);
 
 }

@@ -28,6 +28,6 @@ public class Cave extends Scenary {
     
     @Override
     public String getTitle() {
-        return "peer into the cave.";
+        return "Peer into the cave.";
     }
 }

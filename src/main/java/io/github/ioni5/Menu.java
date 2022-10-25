@@ -20,7 +20,12 @@ public class Menu {
     }
 
     public Option getOption() {
-        int option = console.readInt("\nEnter option (1-" + options.size() + "): ");
+        boolean error = false;
+        int option = 0;
+        do {
+            option = console.readInt("\nPlease enter option (1-" + options.size() + "): ");
+            error = !new Intervale(1, options.size()).includes(option);
+        } while (error);
         return options.get(option - 1);
     }
 
